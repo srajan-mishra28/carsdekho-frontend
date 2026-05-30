@@ -1,0 +1,9 @@
+<svg width="180" height="46" viewBox="0 0 180 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="46" height="46" rx="8" fill="#E02B28"/>
+  <path d="M12 27.5C12 22.25 16.05 18 21.05 18H25C29.95 18 34 22.25 34 27.5H31.55C31.08 24.98 28.92 23.08 26.32 23.08H19.68C17.08 23.08 14.92 24.98 14.45 27.5H12Z" fill="white"/>
+  <path d="M15 28.5H31V32H15V28.5Z" fill="white"/>
+  <circle cx="18.5" cy="33" r="3" fill="#161616"/>
+  <circle cx="27.5" cy="33" r="3" fill="#161616"/>
+  <text x="58" y="24" fill="#161616" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="800">CarsDekho</text>
+  <text x="59" y="38" fill="#78716C" font-family="Inter, Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="1.6">SHORTLIST SMARTER</text>
+</svg>

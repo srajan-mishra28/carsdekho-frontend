@@ -1,16 +1,97 @@
-# React + Vite
+# CarsDekho Recommendation Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite + Tailwind frontend for a car recommendation take-home assignment.
 
-Currently, two official plugins are available:
+The app helps buyers move from a vague requirement to a confident shortlist by combining a friendly recommendation form, inventory filters, car cards, and detail views backed by the recommendation APIs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- First-visit recommendation modal with friendly prompts
+- `POST /recommendation` integration showing top 3 matches
+- Reasons to buy with green checks and tradeoffs with red crosses
+- `GET /cars` inventory listing
+- Filters for budget, mileage, seating capacity, transmission, and safety rating
+- Hover-preview star selector for safety rating; results update only after click
+- `GET /car?carId=...` detail modal for each car
+- Downloaded car images stored by car ID in `public/car-images`
+- Responsive, minimal UI built with Tailwind CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React 19
+- Vite
+- Tailwind CSS v4
+- ESLint
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Setup
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create a `.env` file in the project root:
+
+```env
+VITE_API_BASE_URL=https://your-backend-url
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Run lint:
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```text
+src/
+  components/
+    cars/
+    filters/
+    layout/
+    recommendations/
+  config/
+    app.js
+  services/
+    carsApi.js
+  App.jsx
+```
+
+Key files:
+
+- `src/config/app.js` stores constants and reads `VITE_API_BASE_URL`.
+- `src/services/carsApi.js` contains API calls.
+- `src/components/filters/Filters.jsx` contains inventory filter UI.
+- `src/components/recommendations/RecommendationDialog.jsx` contains the recommendation form and results.
+- `public/car-images` stores downloaded images named by car ID, for example `car-001.jpg`.
+
+## API Endpoints Used
+
+- `GET /cars`
+- `GET /car?carId=<id>`
+- `POST /recommendation`
+
+## Future Scope
+
+- Add comparison mode for shortlisted cars
+- Add sorting by price, mileage, safety, and recommendation score
+- Persist shortlist across sessions
+- Add richer car detail pages with reviews, pros, cons, and variant-level specs
+- Add loading skeletons for recommendation results and car details
+- Improve image accuracy by sourcing official model images or CDN-hosted assets
+- Add tests for API services, filters, and recommendation rendering
+- Add deployment config and environment-specific API URLs

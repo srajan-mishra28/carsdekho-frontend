@@ -2,7 +2,7 @@
 
 A React + Vite + Tailwind frontend for a car recommendation take-home assignment.
 
-The app helps buyers move from a vague requirement to a confident shortlist by combining a friendly recommendation form, inventory filters, car cards, and detail views backed by the recommendation APIs.
+The app helps buyers move from a vague requirement to a confident shortlist by combining a friendly recommendation form, inventory filters, car cards, and detail views backed by the recommendation APIs. The beauty of this application is that it was built without any human code, completely with the help of AI- ready and shipped in about an hour.
 
 ## Features
 
@@ -22,6 +22,8 @@ The app helps buyers move from a vague requirement to a confident shortlist by c
 - Vite
 - Tailwind CSS v4
 - ESLint
+- AI
+- Codex
 
 ## Setup
 

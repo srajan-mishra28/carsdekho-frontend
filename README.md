@@ -1,3 +1,5 @@
+#NOTE
+Since the backend has been hosted in free tier of render, First call can take 50 seconds or more to respond. Further calls shall be smooth. I apologise for inconvenience but I didn't know this before hosting. Thanks.
 # CarsDekho Recommendation Frontend
 
 A React + Vite + Tailwind frontend for a car recommendation take-home assignment.

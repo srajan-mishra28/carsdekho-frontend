@@ -1,6 +1,4 @@
-export const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ||
-  'https://recommendation-backend-alle.onrender.com'
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '')
 
 export const FIRST_VISIT_KEY = 'carsdekho-recommendation-seen'
 

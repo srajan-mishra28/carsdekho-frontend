@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { SEATS } from '../../config/app'
 import { Field } from '../common'
 import { SliderPair } from './SliderPair'
@@ -67,37 +68,53 @@ export function Filters({ filters, updateFilter }) {
         </select>
       </Field>
 
-      <div>
-        <label className="text-sm font-semibold text-stone-800">Minimum safety rating</label>
-        <div className="mt-2 flex rounded-md border border-stone-200 bg-stone-50 p-2">
-          {[1, 2, 3, 4, 5].map((rating) => (
-            <button
-              key={rating}
-              type="button"
-              onClick={() =>
-                updateFilter('minSafetyRating', filters.minSafetyRating === rating ? '' : rating)
+      <SafetyRatingFilter
+        value={filters.minSafetyRating}
+        onChange={(rating) =>
+          updateFilter('minSafetyRating', filters.minSafetyRating === rating ? '' : rating)
+        }
+      />
+    </div>
+  )
+}
+
+function SafetyRatingFilter({ value, onChange }) {
+  const [hoveredRating, setHoveredRating] = useState(null)
+  const previewRating = hoveredRating ?? Number(value)
+
+  return (
+    <div>
+      <label className="text-sm font-semibold text-stone-800">Minimum safety rating</label>
+      <div
+        className="mt-2 flex rounded-md border border-stone-200 bg-stone-50 p-2"
+        onMouseLeave={() => setHoveredRating(null)}
+      >
+        {[1, 2, 3, 4, 5].map((rating) => (
+          <button
+            key={rating}
+            type="button"
+            onMouseEnter={() => setHoveredRating(rating)}
+            onFocus={() => setHoveredRating(rating)}
+            onBlur={() => setHoveredRating(null)}
+            onClick={() => onChange(rating)}
+            className="grid h-10 flex-1 place-items-center rounded-md text-2xl leading-none transition hover:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#e02b28]/20"
+            aria-label={`Set minimum safety rating to ${rating} stars`}
+          >
+            <span
+              className={
+                previewRating >= rating
+                  ? 'text-yellow-400 drop-shadow-sm'
+                  : 'text-white drop-shadow-[0_0_1px_rgba(0,0,0,0.7)]'
               }
-              className="grid h-10 flex-1 place-items-center rounded-md text-2xl leading-none transition hover:bg-white"
-              aria-label={`Set minimum safety rating to ${rating} stars`}
             >
-              <span
-                className={
-                  Number(filters.minSafetyRating) >= rating
-                    ? 'text-yellow-400 drop-shadow-sm'
-                    : 'text-white drop-shadow-[0_0_1px_rgba(0,0,0,0.7)]'
-                }
-              >
-                ★
-              </span>
-            </button>
-          ))}
-        </div>
-        <p className="mt-1 text-xs font-medium text-stone-500">
-          {filters.minSafetyRating
-            ? `${filters.minSafetyRating} stars and above`
-            : 'Any safety rating'}
-        </p>
+              {'\u2605'}
+            </span>
+          </button>
+        ))}
       </div>
+      <p className="mt-1 text-xs font-medium text-stone-500">
+        {value ? `${value} stars and above` : 'Hover to preview, click to apply'}
+      </p>
     </div>
   )
 }

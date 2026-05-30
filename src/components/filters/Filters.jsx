@@ -3,6 +3,8 @@ import { SEATS } from '../../config/app'
 import { Field } from '../common'
 import { SliderPair } from './SliderPair'
 
+const AVAILABLE_SEATS = [5, 7]
+
 export function Filters({ filters, updateFilter }) {
   return (
     <div className="space-y-5">
@@ -41,14 +43,16 @@ export function Filters({ filters, updateFilter }) {
             <button
               key={seat}
               type="button"
+              disabled={!AVAILABLE_SEATS.includes(seat)}
               onClick={() =>
                 updateFilter('seatingCapacity', filters.seatingCapacity === seat ? '' : seat)
               }
-              className={`h-10 rounded-md border text-sm font-semibold transition ${
+              className={`h-10 rounded-md border text-sm font-semibold transition disabled:cursor-not-allowed disabled:border-stone-200 disabled:bg-stone-100 disabled:text-stone-300 disabled:opacity-60 ${
                 filters.seatingCapacity === seat
                   ? 'border-[#e02b28] bg-[#fff1f1] text-[#b91c1c]'
-                  : 'border-stone-200 bg-white text-stone-700 hover:border-stone-300'
+                  : 'border-stone-200 bg-white text-stone-700 hover:border-stone-300 disabled:hover:border-stone-200'
               }`}
+              title={!AVAILABLE_SEATS.includes(seat) ? 'No cars available with this seating capacity' : undefined}
             >
               {seat}
             </button>
